@@ -1,0 +1,53 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "App:Main",
+            "type": "node",
+            "request": "launch",
+            "cwd": "${workspaceRoot}/packages/app",
+            "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron",
+            "windows": {
+                "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron.cmd"
+            },
+            "preLaunchTask": "gulp: rebuild/client",
+            "autoAttachChildProcesses": true,
+            "outputCapture": "std",
+            "runtimeArgs": ["--remote-debugging-port=9333"],
+            "args": ["./lib/main.js", "--enableDebugging"],
+            "console": "internalConsole"
+        },
+        {
+            "name": "App:Client",
+            "type": "chrome",
+            "request": "attach",
+            "port": 9333,
+            "timeout": 30000,
+            "webRoot": "${workspaceRoot}",
+            "sourceMaps": true,
+            "sourceMapPathOverrides": {
+                "webpack:///./~/*": "${workspaceRoot}/node_modules",
+                "webpack:///./*": "${workspaceRoot}/*",
+                "webpack:///*": "*"
+            }
+        }
+    ],
+    "compounds": [
+        {
+            "name": "App",
+            "configurations": ["App:Main", "App:Client"]
+        }
+    ],
+    "php.debug.executablePath": "xdebug.php-debug",
+    "python.defaultInterpreterPath": "c:\\Users\\kishore\\Downloads\\python-3.11.2-amd64.exe",
+    "files.associations": {
+        "*.py": "python"
+    },
+    "[python]": {
+    
+        "editor.wordBasedSuggestions": false,
+        "editor.formatOnType": true
+    },
+    "php.validate.executablePath": "C:\Users\kishore\Desktop\Xampp\php",
+    "liveServer.settings.donotShowInfoMsg": true
+}
