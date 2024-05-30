@@ -16,7 +16,7 @@ $selleremail=$_POST['selleremail'];
 $sql=mysqli_query($con,"Update sellers set category='$category',sellerName='$sellername',address='$address 'where id='".$_SESSION['id']."'");
 if(1)
 {
-echo "<script>alert('Doctor Details updated Successfully');</script>";
+echo "<script>alert('Seller Details updated Successfully');</script>";
 
 }
 
